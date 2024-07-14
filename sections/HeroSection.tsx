@@ -7,20 +7,19 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 const words = [
   {
-    text: "Build",
+    text: "Full",
+    className:
+      "md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
   },
   {
-    text: "awesome",
+    text: "Stack",
+    className:
+      "md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
   },
   {
-    text: "apps",
-  },
-  {
-    text: "with",
-  },
-  {
-    text: "Aceternity.",
-    className: "text-blue-500 dark:text-blue-500",
+    text: "Developer",
+    className:
+      "md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
   },
 ];
 
@@ -37,11 +36,8 @@ const HeroSection = () => {
             I'm{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-indigo-500 to-sky-500">
               Muhammad Babar,
-            </span>{" "}
-            <br />
-            <span className="md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20">
-              Full Stack Developer
             </span>
+            <TypewriterEffectSmooth words={words} />
           </h1>
         </div>
         <div className="mt-5">
