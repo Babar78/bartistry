@@ -2,14 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-}
-
 body {
+  @apply bg-black text-white;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
