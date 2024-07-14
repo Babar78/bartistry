@@ -23,9 +23,13 @@ const words = [
   },
 ];
 
+const handleDownloadResume = () => {
+  console.log("Download Resume");
+};
+
 const HeroSection = () => {
   return (
-    <section className="w-screen h-screen flex justify-center items-center">
+    <section className="w-screen h-screen flex justify-center items-center max-w-[1240px] mx-auto">
       <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md relative">
         <div className="flex gap-[10px] items-center border-[1.5px] border-[rgba(255,255,255,0.15)] px-2 py-1 rounded-full text-[14px] text-white">
           <div className="bg-indigo-500 w-[10px] h-[10px] rounded-full"></div>
@@ -41,10 +45,10 @@ const HeroSection = () => {
           </h1>
         </div>
         <div className="mt-5">
-          <span className="text-center text-gray-400 relative z-20">
+          <p className="text-center text-gray-400 relative z-20">
             Crafting seamless digital experiences through innovative design and
             efficient code.
-          </span>
+          </p>
         </div>
         <div className="w-[40rem] h-40 relative z-10 mt-3 mb-5">
           {/* Gradients */}
@@ -72,7 +76,7 @@ const HeroSection = () => {
           roundedFull={true}
           withIcon={true}
           icon={<IconCloudDown />}
-          onClick={() => alert("Download Resume")}
+          onClick={handleDownloadResume}
         />
       </div>
     </section>
