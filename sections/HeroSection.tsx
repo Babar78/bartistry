@@ -4,6 +4,24 @@ import { SparklesCore } from "../components/ui/sparkles";
 import CustomButton from "@/components/CustomButton";
 import { IconCloudDown } from "@tabler/icons-react";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import LogosCarousel from "@/components/LogosCarousel";
+
+// Importing Logos
+import htmlLogo from "@/public/images/tech-logos/html.svg";
+import cssLogo from "@/public/images/tech-logos/css.png";
+import jsLogo from "@/public/images/tech-logos/js.svg";
+import tsLogo from "@/public/images/tech-logos/ts.svg";
+import reactLogo from "@/public/images/tech-logos/react.svg";
+import nextLogo from "@/public/images/tech-logos/nextjs.svg";
+import mongoLogo from "@/public/images/tech-logos/mongodb.svg";
+import expressLogo from "@/public/images/tech-logos/express.svg";
+import nodeLogo from "@/public/images/tech-logos/nodejs.svg";
+import reduxLogo from "@/public/images/tech-logos/redux.svg";
+import chartJsLogo from "@/public/images/tech-logos/chartjs.svg";
+import dartLogo from "@/public/images/tech-logos/dart.svg";
+import framerMotionLogo from "@/public/images/tech-logos/framermotion.png";
+import mondayLogo from "@/public/images/tech-logos/mondaycom.svg";
+import muiLogo from "@/public/images/tech-logos/mui.svg";
 
 const words = [
   {
@@ -23,13 +41,74 @@ const words = [
   },
 ];
 
+const techLogos = [
+  { src: htmlLogo, altText: "HTML" },
+  {
+    src: cssLogo,
+    altText: "CSS",
+  },
+  {
+    src: jsLogo,
+    altText: "JavaScript",
+  },
+  {
+    src: tsLogo,
+    altText: "TypeScript",
+  },
+  {
+    src: reactLogo,
+    altText: "React",
+  },
+  {
+    src: nextLogo,
+    altText: "Next.js",
+  },
+  {
+    src: framerMotionLogo,
+    altText: "Framer Motion",
+  },
+  {
+    src: mongoLogo,
+    altText: "MongoDB",
+  },
+  {
+    src: expressLogo,
+    altText: "Express",
+  },
+  {
+    src: nodeLogo,
+    altText: "Node.js",
+  },
+  {
+    src: reduxLogo,
+    altText: "Redux Toolkit",
+  },
+  {
+    src: dartLogo,
+    altText: "Dart",
+  },
+  {
+    src: muiLogo,
+    altText: "Material-UI",
+  },
+  {
+    src: chartJsLogo,
+    altText: "Chart.js",
+  },
+
+  {
+    src: mondayLogo,
+    altText: "Monday.com",
+  },
+];
+
 const handleDownloadResume = () => {
   console.log("Download Resume");
 };
 
 const HeroSection = () => {
   return (
-    <section className="w-screen h-screen flex justify-center items-center max-w-[1240px] mx-auto">
+    <section className="w-screen h-screen flex flex-col justify-center items-center max-w-[1240px] mx-auto relative">
       <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md relative">
         <div className="flex gap-[10px] items-center border-[1.5px] border-[rgba(255,255,255,0.15)] px-2 py-1 rounded-full text-[14px] text-white">
           <div className="bg-indigo-500 w-[10px] h-[10px] rounded-full"></div>
@@ -78,6 +157,9 @@ const HeroSection = () => {
           icon={<IconCloudDown />}
           onClick={handleDownloadResume}
         />
+      </div>
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-[1240px] flex justify-center">
+        <LogosCarousel items={techLogos} speed="normal" />
       </div>
     </section>
   );
