@@ -5,6 +5,8 @@ import Image from "next/image";
 import TextRotate from "./ui/text-rotate";
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
+import { Burger } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 
 const navItems = [
   {
@@ -33,37 +35,49 @@ const navItems = [
   },
 ];
 
+const transition = {
+  type: "spring",
+  mass: 0.5,
+  damping: 11.5,
+  stiffness: 100,
+  restDelta: 0.001,
+  restSpeed: 0.001,
+};
+
 const Navbar = ({ className }: { className?: string }) => {
   const [scrolled, setScrolled] = useState(false);
   const controls = useAnimation();
   const navItemControls = useAnimation();
 
+  //   Toggle Nabar on Mobile Version
+  const [opened, { toggle }] = useDisclosure();
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-        controls.start({
-          width: "fit-content",
-          transition: { duration: 0.5 },
-          backgroundColor: "black",
-          border: " 2px solid rgba(255,255,255,0.15)",
-        });
-        navItemControls.start({
-          scale: 0.9,
-          transition: { duration: 0.5 },
-        });
-      } else {
-        setScrolled(false);
-        controls.start({
-          width: "100%",
-          transition: { duration: 0.5 },
-          backgroundColor: "transparent",
-          border: "none",
-        });
-        navItemControls.start({ scale: 1 });
+      if (window.innerWidth > 900) {
+        if (window.scrollY > 20) {
+          setScrolled(true);
+          controls.start({
+            width: "fit-content",
+            transition: { duration: 0.5 },
+            border: "2px solid rgba(255,255,255,0.15)",
+          });
+          navItemControls.start({
+            scale: 0.9,
+            transition: { duration: 0.5 },
+          });
+        } else {
+          setScrolled(false);
+          controls.start({
+            width: "100%",
+            transition: { duration: 0.5 },
+            backgroundColor: "transparent",
+            border: "none",
+          });
+          navItemControls.start({ scale: 1 });
+        }
       }
     };
-
     // Check initial scroll position and set state accordingly
     handleScroll();
 
@@ -71,14 +85,14 @@ const Navbar = ({ className }: { className?: string }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [controls]);
+  }, [controls, window.innerWidth]);
 
   return (
-    <motion.div
+    <motion.nav
       animate={controls}
-      initial={{ width: "100%" }}
+      initial={{ width: `100%` }}
       className={cn(
-        "fixed top-10 inset-x-0 z-50 flex justify-between items-center mx-auto max-w-[1240px] gap-12 !box-content px-4 py-2 rounded-full bg-black",
+        "navbar relative w-full flex justify-between items-center mx-auto max-w-[1240px] py-2 gap-12 !box-content rounded-full !bg-black",
         className
       )}
     >
@@ -88,9 +102,10 @@ const Navbar = ({ className }: { className?: string }) => {
         width={100}
         height={100}
         style={{ width: "auto", height: "auto" }}
+        className="ml-4"
       />
       <motion.div
-        className="flex items-center justify-center space-x-5"
+        className="min-[900px]:flex items-center justify-center space-x-5 hidden"
         animate={navItemControls}
         initial={{ scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -101,7 +116,7 @@ const Navbar = ({ className }: { className?: string }) => {
           </Link>
         ))}
       </motion.div>
-      <motion.div className="flex gap-2 items-center">
+      <motion.div className="min-[900px]:flex hidden gap-2 items-center mr-4">
         <div className="text-right">
           <p className="text-[12px]">Muhammad Babar</p>
           <div className="">
@@ -121,7 +136,60 @@ const Navbar = ({ className }: { className?: string }) => {
           />
         </div>
       </motion.div>
-    </motion.div>
+
+      {/* Mobile Version Navbar */}
+      <div className="min-[900px]:hidden block text-white mr-4">
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          aria-label="Toggle navigation"
+          color="white"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={transition}
+        >
+          {opened && (
+            <div className="absolute top-[calc(100%_+_0.5rem)] left-1/2 transform -translate-x-1/2">
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{
+                  height: opened ? "auto" : 0,
+                  opacity: opened ? 1 : 0,
+                }}
+                transition={{ duration: 0.5 }}
+                layoutId="active" // layoutId ensures smooth animation
+                className="bg-[rgba(0,0,0,0)] backdrop-blur-lg rounded-2xl border border-white/[0.2] shadow-xl"
+              >
+                <motion.div
+                  transition={{ duration: 0.5 }}
+                  layout // layout ensures smooth animation
+                  className="w-[90vw] h-fit p-4 px-8 text-center flex flex-col justify-center items-center gap-5"
+                >
+                  {navItems.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ scale: 0, y: -10 }}
+                      animate={{ scale: 1, y: 0 }}
+                      transition={{ delay: 0.1 * index }}
+                    >
+                      <Link
+                        key={index}
+                        href={item.link}
+                        className="hover:opacity-80 block"
+                      >
+                        <span className="text-sm">{item.name}</span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </motion.nav>
   );
 };
 
