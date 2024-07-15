@@ -45,7 +45,7 @@ const HeroSection = () => {
           </h1>
         </div>
         <div className="mt-5">
-          <p className="text-center text-gray-400 relative z-20">
+          <p className="text-center text-gray-300 relative z-20">
             Crafting seamless digital experiences through innovative design and
             efficient code.
           </p>
