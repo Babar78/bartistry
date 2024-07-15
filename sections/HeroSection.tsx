@@ -27,17 +27,17 @@ const words = [
   {
     text: "Full",
     className:
-      "md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
+      "md:text-5xl text-3xl lg:text-[3.5rem] font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
   },
   {
     text: "Stack",
     className:
-      "md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
+      "md:text-5xl text-3xl lg:text-[3.5rem] font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
   },
   {
     text: "Developer",
     className:
-      "md:text-3xl text-lg lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
+      "md:text-5xl text-3xl lg:text-[3.5rem] font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20",
   },
 ];
 
@@ -108,14 +108,14 @@ const handleDownloadResume = () => {
 
 const HeroSection = () => {
   return (
-    <section className="w-screen h-screen flex flex-col justify-center items-center max-w-[1240px] mx-auto relative">
+    <section className="w-screen min-h-screen flex flex-col justify-center items-center max-w-[1240px] mx-auto relative">
       <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md relative">
         <div className="flex gap-[10px] items-center border-[1.5px] border-[rgba(255,255,255,0.15)] px-2 py-1 rounded-full text-[14px] text-white">
           <div className="bg-indigo-500 w-[10px] h-[10px] rounded-full"></div>
           <span>Open to Work</span>
         </div>
         <div className="content mt-5">
-          <h1 className="md:text-xl text-md lg:text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20">
+          <h1 className="text-2xl lg:text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 relative z-20">
             I'm{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-indigo-500 to-sky-500">
               Muhammad Babar,
