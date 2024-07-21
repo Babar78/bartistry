@@ -26,8 +26,7 @@ const CustomButton = ({
       id={id}
       onClick={onClick}
       disabled={disabled}
-      className={`bg-black text-white border-[rgba(225,255,255,0.15)]
-      } border-2 px-4 py-2 ${
+      className={`bg-black text-white border-[rgba(225,255,255,0.15)] w-fit border-2 px-4 py-2 ${
         roundedFull ? "rounded-full" : ""
       } flex gap-2 items-center`}
     >

@@ -23,9 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className}`}>
         <MantineProvider>
-          <div className="fixed top-0 inset-x-0 z-50 w-full max-w-[1240px] mx-auto pt-5 bg-black max-[900px]:border-b border-[rgba(255,255,255,0.15)]">
+          {/* <div className="fixed top-0 inset-x-0 z-50 w-full max-w-[1240px] mx-auto pt-5 bg-black max-[900px]:border-b border-[rgba(255,255,255,0.15)]">
             <Navbar />
-          </div>
+          </div> */}
           {children}
         </MantineProvider>
       </body>

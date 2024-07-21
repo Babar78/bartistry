@@ -1,10 +1,10 @@
-import HeroSection from "@/sections/HeroSection";
+import NewHeroSection from "@/sections/NewHeroSection";
 import React from "react";
 
 export default function Home() {
   return (
     <main className="">
-      <HeroSection />
+      <NewHeroSection />
     </main>
   );
 }
